@@ -9,7 +9,7 @@ import tags
 import time
 import sys
 
-# Instanz des Interface erstellen
+# Create intance of amplifier interface
 amp = amp_interface.AmpInterface()
 
 # Function to switch to frequency band 1
@@ -44,7 +44,7 @@ def switch_band1():
             print(tags.main_tag + 'Error connecting to SPS.')
 
     else:
-        print(tags.main_tag + 'Error connecting to AMP, check GPIB connection.')
+        print(tags.main_tag + 'BAND1 - Error connecting to AMP, check GPIB connection.')
 
 # Function to switch to frequency band 2
 def switch_band2():
@@ -69,7 +69,7 @@ def switch_band2():
             print(tags.main_tag + 'Switched to Band 2.')
 
     else:
-        print(tags.main_tag + 'Error connecting to AMP, check GPIB connection.')
+        print(tags.main_tag + 'BAND2 - Error connecting to AMP, check GPIB connection.')
 
 # Function to switch to frequency band 3
 def switch_band3():
@@ -94,7 +94,7 @@ def switch_band3():
             print(tags.main_tag + 'Switched to Band 3.')
 
     else:
-        print(tags.main_tag + 'Error connecting to AMP, check GPIB connection.')
+        print(tags.main_tag + 'BAND3 - Error connecting to AMP, check GPIB connection.')
 
 # Function to query status of amplifier
 def ask_status():
@@ -147,13 +147,13 @@ def parse_status(raw_result):
     return [status_binary, band, lcl_rem, flt, llo]     ## todo: als map überarbeiten für bessere übersicht beim Zugriff
 
 # Send command to amplifier to reset any latched faults
-def reset_faults(amp):
+def reset_faults():
     cmd = 'RST'
     if amp.connect(tags.sim_addr):
         amp.write_command(cmd)
         amp.disconnect()
     else:
-        print(tags.main_tag + 'Error connecting to AMP.')
+        print(tags.main_tag + 'RST - Error connecting to AMP.')
 
 
   
@@ -164,6 +164,8 @@ if __name__ == "__main__":
     if argument == 'BAND1':
         switch_band1()
     elif argument == 'BAND2':
-        switch_band2
+        switch_band2()
     elif argument == 'BAND3':
-        switch_band3
+        switch_band3()
+
+    time.sleep(2)
