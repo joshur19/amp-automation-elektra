@@ -36,7 +36,9 @@ def switch_band1():
 
         # AMP auf OPR Mode setzen
         if amp.connect(tags.sps_addr):
-            amp.write_command('STBY')
+            amp.write_command('OPER')
+            time.sleep(2)
+            amp.write_command('OPER')
             time.sleep(1)
             amp.write_command('OPER')
             print(tags.main_tag + 'SPS in OPR Mode.')
