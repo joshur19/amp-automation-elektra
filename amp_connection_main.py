@@ -22,8 +22,8 @@ def switch_band1():
 
     if amp.connect(tags.sim_addr):
 
-        # bis zu 10 mal versuchen Band zu wechseln
-        while status[1] != 'BAND1' and counter <= 10:
+        # bis zu 20 mal versuchen Band zu wechseln
+        while status[1] != 'BAND1' and counter <= 20:
             amp.write_command(cmd)
             time.sleep(2)
             status = ask_status()
@@ -58,8 +58,8 @@ def switch_band2():
 
     if amp.connect(tags.sim_addr):
 
-        # bis zu 10 mal versuchen Band zu wechseln
-        while status[1] != 'BAND2' and counter <= 10:
+        # bis zu 20 mal versuchen Band zu wechseln
+        while status[1] != 'BAND2' and counter <= 20:
             amp.write_command(cmd)
             time.sleep(2)
             status = ask_status()
@@ -83,8 +83,8 @@ def switch_band3():
 
     if amp.connect(tags.sim_addr):
 
-        # bis zu 10 mal versuchen Band zu wechseln
-        while status[1] != 'BAND3' and counter <= 10:
+        # bis zu 20 mal versuchen Band zu wechseln
+        while status[1] != 'BAND3' and counter <= 20:
             amp.write_command(cmd)
             time.sleep(2)
             status = ask_status()
